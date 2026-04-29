@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="20dp">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -18,4 +19,9 @@
         android:scaleY="1.5"
         app:srcCompat="@drawable/baseline_add_24"
         android:contentDescription="@string/create_todo_item"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_todoitemlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
