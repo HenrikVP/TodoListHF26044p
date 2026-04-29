@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TodoListHF26044p</string>
+    <string name="create_todo_item">Create todo item</string>
+    <string name="title">Title</string>
+    <string name="finish_item">Finish item</string>
+</resources>
