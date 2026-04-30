@@ -21,8 +21,12 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import dk.tec.todolisthf26044p.databinding.ActivityMainBinding;
+
 // MainActivity class: Entry point for the TodoList app
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;// = ActivityMainBinding.inflate(getLayoutInflater());
 
     // SharedPreferences for storing todo list data locally
     SharedPreferences prefs;
@@ -34,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // Enable edge-to-edge display for immersive UI
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         // Adjust padding to account for system bars (status/navigation bars)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -70,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Initializes the Floating Action Button (FAB) to open CreateActivity
     private void initFloatingActionButton() {
-        FloatingActionButton fob = findViewById(R.id.fab);
-        fob.setOnClickListener(view -> {
+        //FloatingActionButton fob = findViewById(R.id.fab);
+        binding.fab.setOnClickListener(view -> {
             // Launch CreateActivity to add a new todo item
             Intent intent = new Intent(getApplicationContext(), CreateActivity.class);
             startActivity(intent);
@@ -80,12 +85,12 @@ public class MainActivity extends AppCompatActivity {
 
     // Initializes the RecyclerView to display the list of todo items
     private void initRecyclerview() {
-        RecyclerView recyclerView = findViewById(R.id.rv_todoitemlist);
+        //RecyclerView recyclerView = findViewById(R.id.rv_todoitemlist);
         // Set a LinearLayoutManager for vertical scrolling
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvTodoitemlist.setLayoutManager(new LinearLayoutManager(this));
         // Create and set the adapter for the RecyclerView
         TodoItemAdapter adapter = new TodoItemAdapter(todoItemList);
-        recyclerView.setAdapter(adapter);
+        binding.rvTodoitemlist.setAdapter(adapter);
     }
 
     // Loads the list of TodoItems from SharedPreferences
