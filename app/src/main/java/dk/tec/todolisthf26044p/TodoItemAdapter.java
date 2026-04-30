@@ -1,6 +1,7 @@
 package dk.tec.todolisthf26044p;
 
 // Import classes for creating and managing views
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,13 +25,12 @@ public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemAdapter.MyView
     }
 
     // ViewHolder class represents ONE row/item in the RecyclerView
-    public static class MyViewHolder extends RecyclerView.ViewHolder
-    {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         // UI components for each row
         TextView titleview, dateview;
 
         // Constructor links UI components to layout elements
-        public MyViewHolder(View item_row){
+        public MyViewHolder(View item_row) {
             super(item_row);
 
             // Find views inside item_row layout
@@ -45,7 +45,7 @@ public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemAdapter.MyView
 
         // Inflate (create) layout from XML file (item_row.xml)
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_row, parent,false);
+                .inflate(R.layout.item_row, parent, false);
 
         // Return a new ViewHolder with that layout
         return new MyViewHolder(view);

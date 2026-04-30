@@ -11,6 +11,8 @@ public class TodoItem implements Serializable {
     private LocalDateTime deadline;
     private boolean repeatable;
 
+
+
     public TodoItem(String title, LocalDateTime deadline, boolean repeatable) {
         this.title = title;
         this.deadline = deadline;

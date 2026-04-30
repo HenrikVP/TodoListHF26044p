@@ -11,9 +11,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         todoItemList = load();
 
         // Retrieve any new TodoItem passed from CreateActivity
-        getTodoItemFromCreate();
+        getTodoItemFromIntent();
         // Set up the Floating Action Button (FAB) for adding new tasks
         initFloatingActionButton();
         // Initialize and configure the RecyclerView to display todo items
@@ -63,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Retrieves a TodoItem from the Intent extras (if available)
     // This is used when returning from CreateActivity with a new task
-    private void getTodoItemFromCreate() {
+    private void getTodoItemFromIntent() {
         TodoItem todoItem = (TodoItem) getIntent().getSerializableExtra("TodoItem");
         if (todoItem != null) {
             // Add the new TodoItem to the list
@@ -85,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Initializes the RecyclerView to display the list of todo items
     private void initRecyclerview() {
-        //RecyclerView recyclerView = findViewById(R.id.rv_todoitemlist);
         // Set a LinearLayoutManager for vertical scrolling
         binding.rvTodoitemlist.setLayoutManager(new LinearLayoutManager(this));
         // Create and set the adapter for the RecyclerView
@@ -99,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
         String json = prefs.getString("todolist", null);
         if (json == null) return new ArrayList<>();
         Gson gson = new Gson();
-        Type type = new TypeToken<List<TodoItem>>() {}.getType();
+        Type type = new TypeToken<List<TodoItem>>() {
+        }.getType();
         // Deserialize JSON string back to a List<TodoItem>
         return gson.fromJson(json, type);
     }
